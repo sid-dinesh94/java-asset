@@ -119,8 +119,18 @@ public class ITSystemTest {
   }
 
   private static String getProjectNumber(String projectId) {
+    System.out.println(projectId);
     ResourceManager resourceManager = ResourceManagerOptions.getDefaultInstance().getService();
+    if(resourceManager == null){
+      System.out.println("Resource Manager is null");
+    }
     ProjectInfo project = resourceManager.get(projectId);
+    if(project == null){
+      System.out.println("Project is null");
+    }
+    if(project.getProjectNumber() == null){
+      System.out.println("Project Number is null");
+    }
     return Long.toString(project.getProjectNumber());
   }
 }
